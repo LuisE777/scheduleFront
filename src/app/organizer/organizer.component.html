@@ -1,10 +1,6 @@
 <div class="container">
   <div class="row">
-
-
-
-    <div class="col-4">
-      <!-- <h2>Organizador de Horarios</h2> -->
+    <div class="col-sm-12 col-lg-4">
       <mat-accordion>
         <mat-expansion-panel *ngFor="let semestre of semestres">
           <mat-expansion-panel-header>
@@ -12,8 +8,6 @@
               {{ semestre.nombre }}
             </mat-panel-title>
           </mat-expansion-panel-header>
-
-          <!-- Materias -->
           <mat-accordion>
             <mat-expansion-panel *ngFor="let materia of semestre.materias">
               <mat-expansion-panel-header>
@@ -21,14 +15,9 @@
                   {{ materia.nombre }}
                 </mat-panel-title>
               </mat-expansion-panel-header>
-
-              <!-- Docentes -->
               <mat-list>
-
-                <mat-list-item *ngFor="let docente of materia.docentes">
-                  <input type="checkbox" (change)="toggleSubject(docente, $event)" />
-                  GR:{{docente.group}} {{ docente?.name }}
-
+                <mat-list-item *ngFor="let docente of materia.docentes" class="p-0">
+                  <p  class="letter mb-0"> <input type="checkbox" (change)="toggleSubject(docente, $event)" /> GR:{{docente.group}} {{ docente?.name }}</p>
                 </mat-list-item>
               </mat-list>
             </mat-expansion-panel>
@@ -36,21 +25,7 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>
-
-
-
-    <div class="col-8">
-      <!-- <div class="sidebar">
-        <h3>Materias disponibles</h3>
-        <ul>
-          <li *ngFor="let subject of subjects">
-            <input type="checkbox" (change)="toggleSubject(subject, $event)" />
-            {{ subject.name }} ({{ subject.group }}) - {{ subject.day }} {{ subject.time }}
-          </li>
-        </ul>
-      </div> -->
-
-      <!-- Tabla de horarios -->
+    <div class="col-sm-12 col-lg-8">
       <table class="schedule-table">
         <thead>
           <tr>
@@ -65,16 +40,16 @@
             <td>{{ hour }}</td>
             <td *ngFor="let day of days">
               <div *ngIf="selectedSubjects.length > 0">
-                <div *ngFor="let subject of getSubjectsForCell(day, hour)" class="subject-box">
-                  GR:{{subject.group}}<br />{{ subject.name }}<br />AULA: {{ subject.classRoom }}
+                <div *ngFor="let subject of getSubjectsForCell(day, hour)" class="subject-box"
+                  [ngStyle]="{ 'background-color': subject.color }">
+                  <p class="letterReal m-0">GR:{{subject.group}}<br />{{ subject.name }}<br />AULA: {{ subject.classRoom }}</p>
+                  <p class="m-0" *ngIf="subject?.auxiliary"><b>Auxiliatura</b></p>
                 </div>
               </div>
-
             </td>
           </tr>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>

@@ -32,7 +32,7 @@
 }
 
 .subject-box {
-  background: #db0b0b;
+
   padding: 5px;
   border-radius: 4px;
   margin: 2px 0;
@@ -42,4 +42,16 @@
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
+}
+.letter{
+  font-size: 13px;
+  white-space: normal;  /* Permite que el texto se divida en varias líneas */
+  word-wrap: break-word; /* Rompe palabras largas si es necesario */
+  overflow-wrap: break-word;
+}
+.maginP{
+  margin: 0px;
+}
+.letterReal{
+  font-size: 12.5px;
 }
