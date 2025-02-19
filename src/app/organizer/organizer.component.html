@@ -35,18 +35,18 @@
       </mat-accordion>
     </div>
     <div class="col-sm-12 col-lg-8  mt-4">
-      <table class="schedule-table  fondo1">
+      <table class="schedule-table  table-with-background">
         <thead>
           <tr>
-            <th>Hora</th>
-            <th *ngFor="let day of days">
+            <th class="fondo1">Hora</th>
+            <th class="fondo1" *ngFor="let day of days">
               {{ day }}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let hour of hours">
-            <td>{{ hour }}</td>
+            <td class="fondo1">{{ hour }}</td>
             <td *ngFor="let day of days">
               <div *ngIf="selectedSubjects.length > 0">
                 <div *ngFor="let subject of getSubjectsForCell(day, hour)" class="subject-box"
