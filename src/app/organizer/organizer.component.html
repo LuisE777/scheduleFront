@@ -1,6 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-lg-4">
+
+  </div>
+  <div class="row">
+
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <h2 class="me-3">Horario - SIAT</h2>
+      <img src="assets/img/aguila.png" alt="Escudo" width="50">
+    </div>
+    <br>
+    <div class="col-sm-12 col-lg-4  mt-4">
       <mat-accordion>
         <mat-expansion-panel *ngFor="let semestre of semestres">
           <mat-expansion-panel-header>
@@ -17,7 +26,7 @@
               </mat-expansion-panel-header>
               <mat-list>
                 <mat-list-item *ngFor="let docente of materia.docentes" class="p-0">
-                  <p  class="letter mb-0"> <input type="checkbox" (change)="toggleSubject(docente, $event)" /> GR:{{docente.group}} {{ docente?.name }}</p>
+                  <p  class="letter mb-0"> <input type="checkbox" (change)="toggleSubject(docente, $event,materia?.nombre)" /> GR:{{docente.group}} {{ docente?.name }}</p>
                 </mat-list-item>
               </mat-list>
             </mat-expansion-panel>
@@ -25,8 +34,8 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>
-    <div class="col-sm-12 col-lg-8">
-      <table class="schedule-table">
+    <div class="col-sm-12 col-lg-8  mt-4">
+      <table class="schedule-table  fondo1">
         <thead>
           <tr>
             <th>Hora</th>
@@ -42,8 +51,8 @@
               <div *ngIf="selectedSubjects.length > 0">
                 <div *ngFor="let subject of getSubjectsForCell(day, hour)" class="subject-box"
                   [ngStyle]="{ 'background-color': subject.color }">
-                  <p class="letterReal m-0">GR:{{subject.group}}<br />{{ subject.name }}<br />AULA: {{ subject.classRoom }}</p>
-                  <p class="m-0" *ngIf="subject?.auxiliary"><b>Auxiliatura</b></p>
+                  <p class="letterReal m-0">GR:{{subject.group}}<br /><b>{{ subject.subjectName}}</b><br />AULA: {{ subject.classRoom }}</p>
+                  <p class="m-0 letterMinium" *ngIf="subject?.auxiliary"><b>Auxiliatura</b></p>
                 </div>
               </div>
             </td>

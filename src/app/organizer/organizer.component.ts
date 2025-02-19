@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { findIndex } from 'rxjs';
-
 @Component({
   selector: 'app-organizer',
   templateUrl: './organizer.component.html',
@@ -510,164 +508,165 @@ export class OrganizerComponent {
               ]
             }
           ]
-        },{ nombre: 'DERECHO DEL TRABAJO',
-        docentes: [
-        {
-          id: 1, name: 'TORRICO OCAMPO ENRIQUE', group: '01', days: [
-            { day: 'Martes', start: '12:45', end: '14:15', classRoom: 'E 518'},
-            { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 507' }
+        }, {
+          nombre: 'DERECHO DEL TRABAJO',
+          docentes: [
+            {
+              id: 1, name: 'TORRICO OCAMPO ENRIQUE', group: '01', days: [
+                { day: 'Martes', start: '12:45', end: '14:15', classRoom: 'E 518' },
+                { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 507' }
+              ]
+            },
+            {
+              id: 2, name: 'QUIROZ GOMEZ CARMEN RITA', group: '02', days: [
+                { day: 'Martes', start: '09:45', end: '11:15', classRoom: 'E 541' },
+                { day: 'Miércoles', start: '09:45', end: '11:15', classRoom: 'E 541' }
+              ]
+            },
+            {
+              id: 3, name: 'QUINTANILLA CALVIMONTES GONZALO', group: '21', days: [
+                { day: 'Lunes', start: '20:15', end: '21:45', classRoom: 'E 506' },
+                { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 516' }
+              ]
+            },
+            {
+              id: 4, name: 'QUINTANILLA CALVIMONTES GONZALO', group: '22', days: [
+                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 506' },
+                { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 516' }
+              ]
+            },
+            {
+              id: 5, name: 'AMURRIO MARQUEZ MARY', group: '23', days: [
+                { day: 'Jueves', start: '17:15', end: '18:45', classRoom: 'E 205' },
+                { day: 'Sábado', start: '08:15', end: '09:45', classRoom: 'E 106' }
+              ]
+            },
+            {
+              id: 6, name: 'JIMENEZ PINTO EDWIN', group: '24', days: [
+                { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 504' },
+                { day: 'Viernes', start: '18:45', end: '20:15', classRoom: 'E 514' }
+              ]
+            },
+            {
+              id: 7, name: 'JIMENEZ PINTO EDWIN', group: '25', days: [
+                { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 545' },
+                { day: 'Sábado', start: '09:45', end: '11:15', classRoom: 'E 543' }
+              ]
+            }
           ]
-        },
-        {
-          id: 2, name: 'QUIROZ GOMEZ CARMEN RITA', group: '02', days: [
-            { day: 'Martes', start: '09:45', end: '11:15', classRoom: 'E 541'},
-            { day: 'Miércoles', start: '09:45', end: '11:15', classRoom: 'E 541' }
+        }, {
+          nombre: 'ECONOMÍA GENERAL',
+          docentes: [
+            {
+              id: 1, name: 'GRIGORIU MONROY FRANCISCO PABLO', group: '03', days: [
+                { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 308' },
+                { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 308' },
+                { day: 'Viernes', start: '09:45', end: '11:15', classRoom: 'E 308' }
+              ]
+            },
+            {
+              id: 2, name: 'ARAUJO COSSIO ALDO ROMEL', group: '04', days: [
+                { day: 'Lunes', start: '08:15', end: '09:45', classRoom: 'E 310' },
+                { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 310' },
+                { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 310' }
+              ]
+            },
+            {
+              id: 3, name: 'ASCARRAGA SEJAS WILMAR HENRY', group: '21', days: [
+                { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E PB-4' },
+                { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 309' },
+                { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E PB-2' }
+              ]
+            },
+            {
+              id: 4, name: 'MERCADO SORIA JESUS BERNARDO', group: '22', days: [
+                { day: 'Lunes', start: '20:15', end: '21:45', classRoom: 'E 518' },
+                { day: 'Miércoles', start: '20:15', end: '21:45', classRoom: 'E 514' },
+                { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 508' }
+              ]
+            },
+            {
+              id: 5, name: 'HUMEREZ MONTALVO ALBERTO', group: '23', days: [
+                { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 109' },
+                { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 106' },
+                { day: 'Sábado', start: '08:15', end: '09:45', classRoom: 'E 109' }
+              ]
+            },
+            {
+              id: 6, name: 'QUISPE CONDORI RODRIGO ALVARO', group: '24', days: [
+                { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 309' },
+                { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 309' },
+                { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E 309' }
+              ]
+            }
           ]
-        },
-        {
-          id: 3, name: 'QUINTANILLA CALVIMONTES GONZALO', group: '21', days: [
-            { day: 'Lunes', start: '20:15', end: '21:45', classRoom: 'E 506' },
-            { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 516' }
+        }, {
+          nombre: 'SISTEMAS ADMINISTRATIVOS',
+          docentes: [
+            {
+              id: 1, name: 'SEVILLA CESPEDES CLAUDIA', group: '01', days: [
+                { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 541' },
+                { day: 'Miércoles', start: '09:45', end: '11:15', classRoom: 'E 510' },
+                { day: 'Jueves', start: '11:15', end: '12:45', classRoom: 'E 541' }
+              ]
+            },
+            {
+              id: 2, name: 'SEVILLA CESPEDES CLAUDIA', group: '03', days: [
+                { day: 'Lunes', start: '08:15', end: '09:45', classRoom: 'E 309' },
+                { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 101' },
+                { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 310' }
+              ]
+            },
+            {
+              id: 3, name: 'ROCHA CHAVEZ LILIAN MARCELA', group: '22', days: [
+                { day: 'Martes', start: '20:15', end: '21:45', classRoom: 'E 520' },
+                { day: 'Miércoles', start: '06:45', end: '08:15', classRoom: 'E 206' },
+                { day: 'Viernes', start: '06:45', end: '08:15', classRoom: 'E 207' }
+              ]
+            },
+            {
+              id: 4, name: 'ROCHA CHAVEZ LILIAN MARCELA', group: '23', days: [
+                { day: 'Lunes', start: '12:45', end: '14:15', classRoom: 'E 202' },
+                { day: 'Martes', start: '18:45', end: '20:15', classRoom: 'E 207' },
+                { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 206' }
+              ]
+            }
           ]
-        },
-        {
-          id: 4, name: 'QUINTANILLA CALVIMONTES GONZALO', group: '22', days: [
-            { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 506' },
-            { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 516' }
-          ]
-        },
-        {
-          id: 5, name: 'AMURRIO MARQUEZ MARY', group: '23', days: [
-            { day: 'Jueves', start: '17:15', end: '18:45', classRoom: 'E 205' },
-            { day: 'Sábado', start: '08:15', end: '09:45', classRoom: 'E 106' }
-          ]
-        },
-        {
-          id: 6, name: 'JIMENEZ PINTO EDWIN', group: '24', days: [
-            { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 504'},
-            { day: 'Viernes', start: '18:45', end: '20:15', classRoom: 'E 514' }
-          ]
-        },
-        {
-          id: 7, name: 'JIMENEZ PINTO EDWIN', group: '25', days: [
-            { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 545'},
-            { day: 'Sábado', start: '09:45', end: '11:15', classRoom: 'E 543' }
+        }, {
+          nombre: 'SEMINARIO BÁSICO',
+          docentes: [
+            {
+              id: 1, name: 'ANTEZANA LA FUENTE JORGE CARLOS', group: '02', days: [
+                { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 511' },
+                { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 506' }
+              ]
+            },
+            {
+              id: 2, name: 'GUZMAN RODRIGUEZ JESUS', group: '03', days: [
+                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 512' },
+                { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 517' }
+              ]
+            },
+            {
+              id: 3, name: 'ANTEZANA LA FUENTE JORGE CARLOS', group: '05', days: [
+                { day: 'Lunes', start: '08:15', end: '09:45', classRoom: 'E 517' },
+                { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 108' }
+              ]
+            },
+            {
+              id: 4, name: 'ESCALERA MELGAR ALBERTO', group: '21', days: [
+                { day: 'Miércoles', start: '12:45', end: '14:15', classRoom: 'E 104' },
+                { day: 'Jueves', start: '12:45', end: '14:15', classRoom: 'E 103' }
+              ]
+            },
+            {
+              id: 4, name: 'INCA QUISPE RONALD DAVID', group: '24', days: [
+                { day: 'Lunes', start: '12:45', end: '14:15', classRoom: 'E 510' },
+                { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 509' }
+              ]
+            }
           ]
         }
-      ]
-    }, {
-      nombre: 'ECONOMÍA GENERAL',
-      docentes: [
-        {
-          id: 1, name: 'GRIGORIU MONROY FRANCISCO PABLO', group: '03', days: [
-            { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 308' },
-            { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 308' },
-            { day: 'Viernes', start: '09:45', end: '11:15', classRoom: 'E 308' }
-          ]
-        },
-        {
-          id: 2, name: 'ARAUJO COSSIO ALDO ROMEL', group: '04', days: [
-            { day: 'Lunes', start: '08:15', end: '09:45', classRoom: 'E 310' },
-            { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 310' },
-            { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 310' }
-          ]
-        },
-        {
-          id: 3, name: 'ASCARRAGA SEJAS WILMAR HENRY', group: '21', days: [
-            { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E PB-4' },
-            { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 309' },
-            { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E PB-2' }
-          ]
-        },
-        {
-          id: 4, name: 'MERCADO SORIA JESUS BERNARDO', group: '22', days: [
-            { day: 'Lunes', start: '20:15', end: '21:45', classRoom: 'E 518' },
-            { day: 'Miércoles', start: '20:15', end: '21:45', classRoom: 'E 514' },
-            { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 508' }
-          ]
-        },
-        {
-          id: 5, name: 'HUMEREZ MONTALVO ALBERTO', group: '23', days: [
-            { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 109' },
-            { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 106' },
-            { day: 'Sábado', start: '08:15', end: '09:45', classRoom: 'E 109' }
-          ]
-        },
-        {
-          id: 6, name: 'QUISPE CONDORI RODRIGO ALVARO', group: '24', days: [
-            { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 309' },
-            { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 309' },
-            { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E 309' }
-          ]
-        }
-      ]
-    }, {
-      nombre: 'SISTEMAS ADMINISTRATIVOS',
-      docentes: [
-        {
-          id: 1, name: 'SEVILLA CESPEDES CLAUDIA', group: '01', days: [
-            { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 541' },
-            { day: 'Miércoles', start: '09:45', end: '11:15', classRoom: 'E 510' },
-            { day: 'Jueves', start: '11:15', end: '12:45', classRoom: 'E 541' }
-          ]
-        },
-        {
-          id: 2, name: 'SEVILLA CESPEDES CLAUDIA', group: '03', days: [
-            { day: 'Lunes', start: '08:15', end: '09:45', classRoom: 'E 309' },
-            { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 101' },
-            { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 310' }
-          ]
-        },
-        {
-          id: 3, name: 'ROCHA CHAVEZ LILIAN MARCELA', group: '22', days: [
-            { day: 'Martes', start: '20:15', end: '21:45', classRoom: 'E 520' },
-            { day: 'Miércoles', start: '06:45', end: '08:15', classRoom: 'E 206' },
-            { day: 'Viernes', start: '06:45', end: '08:15', classRoom: 'E 207' }
-          ]
-        },
-        {
-          id: 4, name: 'ROCHA CHAVEZ LILIAN MARCELA', group: '23', days: [
-            { day: 'Lunes', start: '12:45', end: '14:15', classRoom: 'E 202' },
-            { day: 'Martes', start: '18:45', end: '20:15', classRoom: 'E 207' },
-            { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 206' }
-          ]
-        }
-      ]
-    }, {
-      nombre: 'SEMINARIO BÁSICO',
-      docentes: [
-        {
-          id: 1, name: 'ANTEZANA LA FUENTE JORGE CARLOS', group: '02', days: [
-            { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 511' },
-            { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 506' }
-          ]
-        },
-        {
-          id: 2, name: 'GUZMAN RODRIGUEZ JESUS', group: '03', days: [
-            { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 512' },
-            { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 517' }
-          ]
-        },
-        {
-          id: 3, name: 'ANTEZANA LA FUENTE JORGE CARLOS', group: '05', days: [
-            { day: 'Lunes', start: '08:15', end: '09:45', classRoom: 'E 517' },
-            { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 108' }
-          ]
-        },
-        {
-          id: 4, name: 'ESCALERA MELGAR ALBERTO', group: '21', days: [
-            { day: 'Miércoles', start: '12:45', end: '14:15', classRoom: 'E 104' },
-            { day: 'Jueves', start: '12:45', end: '14:15', classRoom: 'E 103' }
-          ]
-        },
-        {
-          id: 4, name: 'INCA QUISPE RONALD DAVID', group: '24', days: [
-            { day: 'Lunes', start: '12:45', end: '14:15', classRoom: 'E 510' },
-            { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 509' }
-          ]
-        }
-      ]
-    }
       ]
 
 
@@ -725,7 +724,7 @@ export class OrganizerComponent {
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'MICROECONOMÍA',
           docentes: [
             {
@@ -753,7 +752,7 @@ export class OrganizerComponent {
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'ESTADÍSTICA I',
           docentes: [
             {
@@ -793,7 +792,7 @@ export class OrganizerComponent {
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'INVESTIGACIÓN OPERATIVA',
           docentes: [
             {
@@ -839,7 +838,7 @@ export class OrganizerComponent {
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'MACROECONOMÍA',
           docentes: [
             {
@@ -881,7 +880,7 @@ export class OrganizerComponent {
           ]
         }
       ]
-    },{//dragon
+    }, {//dragon
       nombre: 'CUARTO SEMESTRE',
       materias: [
         {
@@ -1018,15 +1017,15 @@ export class OrganizerComponent {
             },
             {
               id: 2, name: 'CHOQUEPALPA RIOZ ORLANDO DANIEL', group: '02', days: [
-                { day: 'Martes', start: '15:45', end: '17:15', classRoom: 'E 507' , auxiliary: true },
+                { day: 'Martes', start: '15:45', end: '17:15', classRoom: 'E 507', auxiliary: true },
                 { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 511' },
-                { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 511'},
-                { day: 'Viernes', start: '09:45', end: '11:15', classRoom: 'E 512'}
+                { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 511' },
+                { day: 'Viernes', start: '09:45', end: '11:15', classRoom: 'E 512' }
               ]
             },
             {
               id: 3, name: 'CRESPO ZAMBRANA PETER IVAN', group: '10', days: [
-                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 107'},
+                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 107' },
                 { day: 'Martes', start: '18:45', end: '20:15', classRoom: 'E 511' },
                 { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 208' }
               ]
@@ -1036,7 +1035,7 @@ export class OrganizerComponent {
                 { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 516', auxiliary: true },
                 { day: 'Lunes', start: '17:15', end: '18:45', classRoom: 'E 516' },
                 { day: 'Miércoles', start: '17:15', end: '18:45', classRoom: 'E 508' },
-                { day: 'Viernes', start: '17:15', end: '18:45', classRoom: 'E 507'}
+                { day: 'Viernes', start: '17:15', end: '18:45', classRoom: 'E 507' }
               ]
             },
             {
@@ -1068,19 +1067,19 @@ export class OrganizerComponent {
             },
             {
               id: 2, name: 'SEMPERTEGUI ZEBALLOS SANDRA MA', group: '03', days: [
-                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 402'},
+                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 402' },
                 { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 407' }
               ]
             },
             {
               id: 3, name: 'CAMACHO DEL CASTILLO INDIRA', group: '04', days: [
-                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 402'},
+                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 402' },
                 { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 407' }
               ]
             },
             {
               id: 4, name: 'ARAMAYO ANTEZANA JAIME ANTONIO', group: '21', days: [
-                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 401'},
+                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 401' },
                 { day: 'Martes', start: '09:45', end: '11:15', classRoom: 'E 550' }
               ]
             },
@@ -1098,13 +1097,13 @@ export class OrganizerComponent {
             },
             {
               id: 7, name: 'ARAMAYO ANTEZANA JAIME ANTONIO', group: '24', days: [
-                { day: 'Martes', start: '06:45', end: '08:15', classRoom: 'E 550'},
+                { day: 'Martes', start: '06:45', end: '08:15', classRoom: 'E 550' },
                 { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 407' }
               ]
             },
             {
               id: 8, name: 'ZAMORANO ESCALANTE JAIME', group: '25', days: [
-                { day: 'Martes', start: '06:45', end: '08:15', classRoom: 'E 401'},
+                { day: 'Martes', start: '06:45', end: '08:15', classRoom: 'E 401' },
                 { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 401' }
               ]
             },
@@ -1133,19 +1132,19 @@ export class OrganizerComponent {
             },
             {
               id: 2, name: 'ALIENDRE LAFUENTE ROMER SIMON', group: '02', days: [
-                { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 514'},
+                { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 514' },
                 { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 509' }
               ]
             },
             {
               id: 3, name: 'FERREIRA MONTES VICTOR HUGO', group: '03', days: [
-                { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 506'},
+                { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 506' },
                 { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E 513' }
               ]
             },
             {
               id: 4, name: 'PAREDES JALDIN EDUARDO JOAQUIN', group: '04', days: [
-                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 303'},
+                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 303' },
                 { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 310' }
               ]
             },
@@ -1158,7 +1157,7 @@ export class OrganizerComponent {
           ]
         }
       ]
-    },{//dragon
+    }, {//dragon
       nombre: 'QUINTO SEMESTRE',
       materias: [
         {
@@ -1207,14 +1206,14 @@ export class OrganizerComponent {
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'CONTABILIDAD PETROLERA Y MINERA',
           docentes: [
             {
               id: 1, name: 'MALDONADO ULUNQUE VICTOR HUGO', group: '01', days: [
                 { day: 'Lunes', start: '15:45', end: '17:15', classRoom: 'E 542' },
                 { day: 'Miércoles', start: '15:45', end: '17:15', classRoom: 'E 544' },
-                { day: 'Jueves', start:'15:45', end: '17:15', classRoom: 'E 104' }
+                { day: 'Jueves', start: '15:45', end: '17:15', classRoom: 'E 104' }
               ]
             },
             {
@@ -1239,14 +1238,14 @@ export class OrganizerComponent {
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'CONTABILIDAD DE SERVICIOS',
           docentes: [
             {
               id: 1, name: 'VILLARROEL MERCADO ALBERTO', group: '01', days: [
-                { day: 'Martes', start: '12:45', end: '14:15', classRoom: 'E 511' , auxiliary: true},
+                { day: 'Martes', start: '12:45', end: '14:15', classRoom: 'E 511', auxiliary: true },
                 { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 510' },
-                { day: 'Jueves', start:'17:15', end: '18:45', classRoom: 'E 510' }
+                { day: 'Jueves', start: '17:15', end: '18:45', classRoom: 'E 510' }
               ]
             },
             {
@@ -1260,45 +1259,45 @@ export class OrganizerComponent {
               id: 3, name: 'VILLARROEL MERCADO ALBERTO', group: '22', days: [
                 { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 514' },
                 { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 507' },
-                { day: 'Miércoles', start: '12:45', end: '14:15', classRoom: 'E 107' , auxiliary: true}
+                { day: 'Miércoles', start: '12:45', end: '14:15', classRoom: 'E 107', auxiliary: true }
               ]
             },
             {
               id: 4, name: 'SILES RODRIGUEZ ADOLFO JORGE', group: '23', days: [
                 { day: 'Lunes', start: '12:45', end: '14:15', classRoom: 'E 104' },
                 { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 104' },
-                { day: 'Sábado', start: '11:15', end: '12:45', classRoom: 'E 507' , auxiliary: true}
+                { day: 'Sábado', start: '11:15', end: '12:45', classRoom: 'E 507', auxiliary: true }
               ]
             },
             {
               id: 5, name: 'GUZMAN RODRIGUEZ JESUS', group: '24', days: [
                 { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 301' },
                 { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 302' },
-                { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 520' , auxiliary: true}
+                { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 520', auxiliary: true }
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'COSTOS II',
           docentes: [
             {
               id: 1, name: 'POR DESIGNAR DOCENTE', group: '02', days: [
-                { day: 'Martes', start: '15:45', end: '17:15', classRoom: 'E 512' , auxiliary: true},
+                { day: 'Martes', start: '15:45', end: '17:15', classRoom: 'E 512', auxiliary: true },
                 { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 516' },
-                { day: 'Viernes', start:'09:45', end: '11:15', classRoom: 'E 510' },
-                { day: 'Sábado', start:'09:45', end: '11:15', classRoom: 'E 510' }
+                { day: 'Viernes', start: '09:45', end: '11:15', classRoom: 'E 510' },
+                { day: 'Sábado', start: '09:45', end: '11:15', classRoom: 'E 510' }
               ]
             },
             {
               id: 2, name: 'INCA QUISPE RONALD DAVID', group: '10', days: [
-                { day: 'Martes', start: '14:15', end: '15:45', classRoom: 'E 542'},
-                { day: 'Miércoles', start: '14:15', end: '15:45', classRoom: 'E 542'},
-                { day: 'Jueves', start: '14:15', end: '15:45', classRoom: 'E 542'}
+                { day: 'Martes', start: '14:15', end: '15:45', classRoom: 'E 542' },
+                { day: 'Miércoles', start: '14:15', end: '15:45', classRoom: 'E 542' },
+                { day: 'Jueves', start: '14:15', end: '15:45', classRoom: 'E 542' }
               ]
             },
             {
               id: 3, name: 'CHOQUEPALPA RIOZ ORLANDO DANIEL', group: '21', days: [
-                { day: 'Martes', start: '09:45', end: '11:15', classRoom: 'E 205' , auxiliary: true},
+                { day: 'Martes', start: '09:45', end: '11:15', classRoom: 'E 205', auxiliary: true },
                 { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 507' },
                 { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 508' },
                 { day: 'Viernes', start: '18:45', end: '20:15', classRoom: 'E 506' }
@@ -1309,7 +1308,7 @@ export class OrganizerComponent {
                 { day: 'Lunes', start: '17:15', end: '18:45', classRoom: 'E 546' },
                 { day: 'Martes', start: '17:15', end: '18:45', classRoom: 'E 508' },
                 { day: 'Miércoles', start: '17:15', end: '18:45', classRoom: 'E 546' },
-                { day: 'Jueves', start: '12:45', end: '14:15', classRoom: 'E 102' , auxiliary: true}
+                { day: 'Jueves', start: '12:45', end: '14:15', classRoom: 'E 102', auxiliary: true }
               ]
             },
             {
@@ -1317,18 +1316,18 @@ export class OrganizerComponent {
                 { day: 'Martes', start: '06:45', end: '08:15', classRoom: 'E 509' },
                 { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 508' },
                 { day: 'Sábado', start: '06:45', end: '08:15', classRoom: 'E 506' },
-                { day: 'Viernes', start: '17:15', end: '18:45', classRoom: 'E 508' , auxiliary: true}
+                { day: 'Viernes', start: '17:15', end: '18:45', classRoom: 'E 508', auxiliary: true }
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'COSTOS II',
           docentes: [
             {
               id: 1, name: 'LEDEZMA SANDOVAL FEDERICO', group: '03', days: [
-                { day: 'Lunes', start: '14:15', end: '15:45', classRoom: 'E 507'},
-                { day: 'Miércoles', start: '15:45', end: '17:15', classRoom: 'E 506'},
-                { day: 'Viernes', start: '14:15', end: '15:45', classRoom: 'E 507'}
+                { day: 'Lunes', start: '14:15', end: '15:45', classRoom: 'E 507' },
+                { day: 'Miércoles', start: '15:45', end: '17:15', classRoom: 'E 506' },
+                { day: 'Viernes', start: '14:15', end: '15:45', classRoom: 'E 507' }
               ]
             },
             {
@@ -1353,13 +1352,13 @@ export class OrganizerComponent {
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'INFORMATICA II',
           docentes: [
             {
               id: 1, name: 'AVILA MAMANI HECTOR JOSE', group: '01', days: [
-                { day: 'Miércoles', start: '12:15', end: '14:15', classRoom: 'E 407'},
-                { day: 'Sábado', start: '09:45', end: '11:15', classRoom: 'E 407'}
+                { day: 'Miércoles', start: '12:15', end: '14:15', classRoom: 'E 407' },
+                { day: 'Sábado', start: '09:45', end: '11:15', classRoom: 'E 407' }
               ]
             },
             {
@@ -1382,8 +1381,8 @@ export class OrganizerComponent {
             },
             {
               id: 5, name: 'AVILA MAMANI HECTOR JOSE', group: '22', days: [
-                { day: 'Lunes', start: '12:45', end: '14:15', classRoom: 'E 407'},
-                { day: 'Sábado', start: '06:45', end: '08:15', classRoom: 'E 407'}
+                { day: 'Lunes', start: '12:45', end: '14:15', classRoom: 'E 407' },
+                { day: 'Sábado', start: '06:45', end: '08:15', classRoom: 'E 407' }
               ]
             },
             {
@@ -1407,7 +1406,7 @@ export class OrganizerComponent {
           ]
         }
       ]
-    },{//dragon
+    }, {//dragon
       nombre: 'SEXTO SEMESTRE',
       materias: [
         {
@@ -1429,7 +1428,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'TORREZ AGUILAR JOSE', group: '21', days: [
-                { day: 'Lunes', start:'18:45', end: '20:15', classRoom: 'E 102' },
+                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 102' },
                 { day: 'Martes', start: '18:45', end: '20:15', classRoom: 'E 513' },
                 { day: 'Viernes', start: '06:45', end: '08:15', classRoom: 'E 512' }
               ]
@@ -1469,7 +1468,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'VARGAS OROSCO FREDDY', group: '21', days: [
-                { day: 'Lunes', start:'17:15', end: '18:45', classRoom: 'E 510' },
+                { day: 'Lunes', start: '17:15', end: '18:45', classRoom: 'E 510' },
                 { day: 'Miércoles', start: '12:45', end: '14:15', classRoom: 'E 517' },
                 { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 517' }
               ]
@@ -1489,7 +1488,7 @@ export class OrganizerComponent {
             {
               id: 1, name: 'POR DESIGNAR DOCENTE', group: '01', days: [
                 { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 307' },
-                { day: 'Viernes', start:'08:15', end: '09:45', classRoom: 'E 307' },
+                { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E 307' },
                 { day: 'Sábado', start: '08:15', end: '09:45', classRoom: 'E 307' }
               ]
             },
@@ -1502,7 +1501,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'POR DESIGNAR DOCENTE', group: '22', days: [
-                { day: 'Jueves', start:'11:15', end: '12:45', classRoom: 'E 307' },
+                { day: 'Jueves', start: '11:15', end: '12:45', classRoom: 'E 307' },
                 { day: 'Viernes', start: '11:15', end: '12:45', classRoom: 'E 307' },
                 { day: 'Sábado', start: '11:15', end: '12:45', classRoom: 'E 307' }
               ]
@@ -1536,7 +1535,7 @@ export class OrganizerComponent {
             {
               id: 1, name: 'RIVERA MICHEL HENRY', group: '01', days: [
                 { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 507' },
-                { day: 'Miércoles', start:'11:15', end: '12:45', classRoom: 'E 510' },
+                { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 510' },
                 { day: 'Jueves', start: '11:15', end: '12:45', classRoom: 'E 509' }
               ]
             },
@@ -1549,7 +1548,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'GARCIA TORDOYA RICARDO', group: '21', days: [
-                { day: 'Lunes', start:'08:15', end: '09:45', classRoom: 'E 305' },
+                { day: 'Lunes', start: '08:15', end: '09:45', classRoom: 'E 305' },
                 { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 503' },
                 { day: 'Miércoles', start: '08:15', end: '09:45', classRoom: 'E 503' }
               ]
@@ -1569,7 +1568,7 @@ export class OrganizerComponent {
             {
               id: 1, name: 'NAVIA QUIROGA GUSTAVO', group: '01', days: [
                 { day: 'Martes', start: '14:15', end: '15:45', classRoom: 'E 508' },
-                { day: 'Jueves', start:'14:15', end: '15:45', classRoom: 'E 507' },
+                { day: 'Jueves', start: '14:15', end: '15:45', classRoom: 'E 507' },
                 { day: 'Viernes', start: '14:15', end: '15:45', classRoom: 'E 508' }
               ]
             },
@@ -1582,7 +1581,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'SARMIENTO JALDIN RODOLFO', group: '22', days: [
-                { day: 'Miércoles', start:'18:45', end: '20:15', classRoom: 'E 110' },
+                { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 110' },
                 { day: 'Jueves', start: '17:15', end: '18:45', classRoom: 'E 508' },
                 { day: 'Viernes', start: '06:45', end: '08:15', classRoom: 'E 102' }
               ]
@@ -1598,7 +1597,7 @@ export class OrganizerComponent {
         }
 
       ]
-    },{//dragon
+    }, {//dragon
       nombre: 'SEPTIMO SEMESTRE',
       materias: [
         {
@@ -1620,7 +1619,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'TORREZ GALARZA ANDRES REYNALDO', group: '03', days: [
-                { day: 'Martes', start:'18:45', end: '20:15', classRoom: 'E 518' },
+                { day: 'Martes', start: '18:45', end: '20:15', classRoom: 'E 518' },
                 { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 523' },
                 { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 514' }
               ]
@@ -1660,7 +1659,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'CRESPO ZAMBRANA PETER IVAN', group: '21', days: [
-                { day: 'Martes', start:'06:45', end: '08:15', classRoom: 'E 207' },
+                { day: 'Martes', start: '06:45', end: '08:15', classRoom: 'E 207' },
                 { day: 'Miércoles', start: '20:15', end: '21:45', classRoom: 'E 105' },
                 { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 106' }
               ]
@@ -1680,7 +1679,7 @@ export class OrganizerComponent {
             {
               id: 1, name: 'VARGAS JIMENEZ GROVER RULER', group: '01', days: [
                 { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 102' },
-                { day: 'Viernes', start:'20:15', end: '21:45', classRoom: 'E 102' },
+                { day: 'Viernes', start: '20:15', end: '21:45', classRoom: 'E 102' },
                 { day: 'Sábado', start: '11:15', end: '12:45', classRoom: 'E 511' }
               ]
             },
@@ -1693,7 +1692,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'GARCIA ZAMORANO JESUS CESAR', group: '21', days: [
-                { day: 'Lunes', start:'18:45', end: '20:15', classRoom: 'E 407' },
+                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 407' },
                 { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 401' },
                 { day: 'Viernes', start: '18:45', end: '20:15', classRoom: 'E 407' }
               ]
@@ -1706,9 +1705,9 @@ export class OrganizerComponent {
             {
               id: 1, name: 'LAZARTE MALDONADO GROVER ANGEL', group: '02', days: [
                 { day: 'Jueves', start: '11:15', end: '12:45', classRoom: 'E 304' },
-                { day: 'Viernes', start:'09:45', end: '11:15', classRoom: 'E 104' },
+                { day: 'Viernes', start: '09:45', end: '11:15', classRoom: 'E 104' },
                 { day: 'Sábado', start: '09:45', end: '11:15', classRoom: 'E 205' },
-                { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E 516', auxiliary:true }
+                { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E 516', auxiliary: true }
               ]
             },
             {
@@ -1716,15 +1715,15 @@ export class OrganizerComponent {
                 { day: 'Lunes', start: '06:45', end: '08:15', classRoom: 'E 513' },
                 { day: 'Miércoles', start: '06:45', end: '08:15', classRoom: 'E 511' },
                 { day: 'Viernes', start: '18:45', end: '20:15', classRoom: 'E 508' },
-                { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 103', auxiliary:true }
+                { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 103', auxiliary: true }
               ]
             },
             {
               id: 3, name: 'MENDIZABAL VEGA VICTOR HUGO', group: '22', days: [
-                { day: 'Martes', start:'08:15', end: '09:45', classRoom: 'E 104' },
+                { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 104' },
                 { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 107' },
                 { day: 'Sábado', start: '08:15', end: '09:45', classRoom: 'E 107' },
-                { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E 302', auxiliary:true }
+                { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E 302', auxiliary: true }
               ]
             },
             {
@@ -1732,7 +1731,7 @@ export class OrganizerComponent {
                 { day: 'Martes', start: '06:45', end: '08:15', classRoom: 'E 508' },
                 { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 510' },
                 { day: 'Sábado', start: '06:45', end: '08:15', classRoom: 'E 511' },
-                { day: 'Miércoles', start: '12:45', end: '14:15', classRoom: 'E 518', auxiliary:true }
+                { day: 'Miércoles', start: '12:45', end: '14:15', classRoom: 'E 518', auxiliary: true }
               ]
             }
           ]
@@ -1743,7 +1742,7 @@ export class OrganizerComponent {
             {
               id: 1, name: 'CARRASCO BRANEZ OSCAR', group: '01', days: [
                 { day: 'Martes', start: '09:45', end: '11:15', classRoom: 'E 110' },
-                { day: 'Miércoles', start:'09:45', end: '11:15', classRoom: 'E 404' },
+                { day: 'Miércoles', start: '09:45', end: '11:15', classRoom: 'E 404' },
                 { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 509' }
               ]
             },
@@ -1756,7 +1755,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'CARRASCO BRANEZ OSCAR', group: '23', days: [
-                { day: 'Lunes', start:'11:15', end: '12:45', classRoom: 'E 509' },
+                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 509' },
                 { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 510' },
                 { day: 'Jueves', start: '11:15', end: '12:45', classRoom: 'E 516' }
               ]
@@ -1772,7 +1771,7 @@ export class OrganizerComponent {
         }
 
       ]
-    },{//dragon
+    }, {//dragon
       nombre: 'OCTAVO SEMESTRE',
       materias: [
         {
@@ -1794,7 +1793,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'VILLACORTA GUZMAN ROSMERY', group: '22', days: [
-                { day: 'Lunes', start:'20:15', end: '21:45', classRoom: 'E 507' },
+                { day: 'Lunes', start: '20:15', end: '21:45', classRoom: 'E 507' },
                 { day: 'Miércoles', start: '20:15', end: '21:45', classRoom: 'E 506' },
                 { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 506' }
               ]
@@ -1827,7 +1826,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'PEREZ VILLANUEVA MARCIAL', group: '22', days: [
-                { day: 'Martes', start:'20:15', end: '21:45', classRoom: 'E 543' },
+                { day: 'Martes', start: '20:15', end: '21:45', classRoom: 'E 543' },
                 { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 507' },
                 { day: 'Sábado', start: '08:15', end: '09:45', classRoom: 'E 545' }
               ]
@@ -1854,14 +1853,14 @@ export class OrganizerComponent {
             {
               id: 1, name: 'PEREZ VILLANUEVA MARCIAL', group: '21', days: [
                 { day: 'Martes', start: '18:45', end: '20:15', classRoom: 'E 308' },
-                { day: 'Jueves', start:'18:45', end: '20:15', classRoom: 'E 512' },
+                { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 512' },
                 { day: 'Viernes', start: '06:45', end: '08:15', classRoom: 'E 511' },
-                { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 511' , auxiliary:true}
+                { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 511', auxiliary: true }
               ]
             },
             {
               id: 2, name: 'POR DESIGNAR DOCENTE', group: '22', days: [
-                { day: 'Martes', start: '12:45', end: '14:15', classRoom: 'E 303', auxiliary:true },
+                { day: 'Martes', start: '12:45', end: '14:15', classRoom: 'E 303', auxiliary: true },
                 { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 105' },
                 { day: 'Viernes', start: '20:15', end: '21:45', classRoom: 'E 105' },
                 { day: 'Sábado', start: '11:15', end: '12:45', classRoom: 'E 104' }
@@ -1869,10 +1868,10 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'CORTEZ VALLEJO WALTER', group: '24', days: [
-                { day: 'Lunes', start:'17:15', end: '18:45', classRoom: 'E 513' },
+                { day: 'Lunes', start: '17:15', end: '18:45', classRoom: 'E 513' },
                 { day: 'Miércoles', start: '12:45', end: '14:15', classRoom: 'E 516' },
                 { day: 'Jueves', start: '17:15', end: '18:45', classRoom: 'E 513' },
-                { day: 'Miércoles', start: '20:15', end: '21:45', classRoom: 'E 541' , auxiliary:true}
+                { day: 'Miércoles', start: '20:15', end: '21:45', classRoom: 'E 541', auxiliary: true }
               ]
             }
           ]
@@ -1883,7 +1882,7 @@ export class OrganizerComponent {
             {
               id: 1, name: 'IRIARTE DE LA FUENTE MARCELA', group: '01', days: [
                 { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 512' },
-                { day: 'Miércoles', start:'09:45', end: '11:15', classRoom: 'E 513' },
+                { day: 'Miércoles', start: '09:45', end: '11:15', classRoom: 'E 513' },
                 { day: 'Jueves', start: '08:15', end: '09:45', classRoom: 'E 512' }
               ]
             },
@@ -1896,7 +1895,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'AYALA LEAÑO WALTER DANIEL', group: '22', days: [
-                { day: 'Lunes', start:'17:15', end: '18:45', classRoom: 'E PB-1' },
+                { day: 'Lunes', start: '17:15', end: '18:45', classRoom: 'E PB-1' },
                 { day: 'Martes', start: '18:45', end: '20:15', classRoom: 'E 516' },
                 { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 506' }
               ]
@@ -1916,8 +1915,8 @@ export class OrganizerComponent {
             {
               id: 1, name: 'LAFUENTE ARANIBAR JIMMY ROBERTO', group: '10', days: [
                 { day: 'Lunes', start: '12:45', end: '14:15', classRoom: 'E 509' },
-                { day: 'Jueves', start:'12:45', end: '14:15', classRoom: 'E 550' },
-                { day: 'Viernes', start:'12:45', end: '14:15', classRoom: 'E 550' }
+                { day: 'Jueves', start: '12:45', end: '14:15', classRoom: 'E 550' },
+                { day: 'Viernes', start: '12:45', end: '14:15', classRoom: 'E 550' }
               ]
             },
             {
@@ -1929,7 +1928,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'LAFUENTE ARANIBAR JIMMY ROBERTO', group: '21', days: [
-                { day: 'Lunes', start:'18:45', end: '20:15', classRoom: 'E 550' },
+                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 550' },
                 { day: 'Jueves', start: '18:45', end: '20:15', classRoom: 'E 518' },
                 { day: 'Viernes', start: '18:45', end: '20:15', classRoom: 'E 550' }
               ]
@@ -1943,7 +1942,7 @@ export class OrganizerComponent {
             },
             {
               id: 5, name: 'VARGAS JIMENEZ GROVER RULER', group: '23', days: [
-                { day: 'Martes', start:'18:45', end: '20:15', classRoom: 'E 512' },
+                { day: 'Martes', start: '18:45', end: '20:15', classRoom: 'E 512' },
                 { day: 'Viernes', start: '18:45', end: '20:15', classRoom: 'E 511' },
                 { day: 'Sábado', start: '09:45', end: '11:15', classRoom: 'E 511' }
               ]
@@ -1959,7 +1958,7 @@ export class OrganizerComponent {
         }
 
       ]
-    },{//dragon
+    }, {//dragon
       nombre: 'NOVENO SEMESTRE',
       materias: [
         {
@@ -1988,7 +1987,7 @@ export class OrganizerComponent {
             },
             {
               id: 4, name: 'VILLACORTA GUZMAN ROSMERY', group: '22', days: [
-                { day: 'Lunes', start:'18:45', end: '20:15', classRoom: 'E 507' },
+                { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 507' },
                 { day: 'Miércoles', start: '17:15', end: '18:45', classRoom: 'E 506' },
                 { day: 'Jueves', start: '17:15', end: '18:45', classRoom: 'E 544' }
               ]
@@ -2014,9 +2013,9 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'VILLARROEL DAZA MARIA HELEN', group: '23', days: [
-                { day: 'Lunes', start:'11:15', end: '12:45', classRoom: 'E 302' },
-                { day: 'Martes', start:'11:15', end: '12:45', classRoom: 'E 302' },
-                { day: 'Jueves', start:'11:15', end: '12:45', classRoom: 'E 302' }
+                { day: 'Lunes', start: '11:15', end: '12:45', classRoom: 'E 302' },
+                { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 302' },
+                { day: 'Jueves', start: '11:15', end: '12:45', classRoom: 'E 302' }
               ]
             },
             {
@@ -2034,7 +2033,7 @@ export class OrganizerComponent {
             {
               id: 1, name: 'LEYTON GUTIERREZ SONIA', group: '01', days: [
                 { day: 'Lunes', start: '08:15', end: '09:45', classRoom: 'E 513' },
-                { day: 'Martes', start:'11:15', end: '12:45', classRoom: 'E 513' },
+                { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 513' },
                 { day: 'Jueves', start: '11:15', end: '12:45', classRoom: 'E 513' }
               ]
             },
@@ -2047,7 +2046,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'LOPEZ LOPEZ JAIME', group: '23', days: [
-                { day: 'Miércoles', start:'20:15', end: '21:45', classRoom: 'E 543' },
+                { day: 'Miércoles', start: '20:15', end: '21:45', classRoom: 'E 543' },
                 { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 543' },
                 { day: 'Sábado', start: '06:45', end: '08:15', classRoom: 'E 513' }
               ]
@@ -2060,7 +2059,7 @@ export class OrganizerComponent {
             {
               id: 1, name: 'ROCHA CLAROS JUAN', group: '22', days: [
                 { day: 'Lunes', start: '06:45', end: '08:15', classRoom: 'E 514' },
-                { day: 'Viernes', start:'06:45', end: '08:15', classRoom: 'E 513' },
+                { day: 'Viernes', start: '06:45', end: '08:15', classRoom: 'E 513' },
                 { day: 'Sábado', start: '06:45', end: '08:15', classRoom: 'E 516' }
               ]
             },
@@ -2073,9 +2072,9 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'CORNEJO PARRA JAIME', group: '24', days: [
-                { day: 'Martes', start:'06:45', end: '08:15', classRoom: 'E 514' },
-                { day: 'Miércoles', start:'06:45', end: '08:15', classRoom: 'E 517' },
-                { day: 'Jueves', start:'06:45', end: '08:15', classRoom: 'E 107' }
+                { day: 'Martes', start: '06:45', end: '08:15', classRoom: 'E 514' },
+                { day: 'Miércoles', start: '06:45', end: '08:15', classRoom: 'E 517' },
+                { day: 'Jueves', start: '06:45', end: '08:15', classRoom: 'E 107' }
               ]
             }
           ]
@@ -2086,8 +2085,8 @@ export class OrganizerComponent {
             {
               id: 1, name: 'PEREZ VILLANUEVA MARCIAL', group: '21', days: [
                 { day: 'Jueves', start: '20:15', end: '21:45', classRoom: 'E 511' },
-                { day: 'Viernes', start:'20:15', end: '21:45', classRoom: 'E 542' },
-                { day: 'Sábado', start:'06:45', end: '08:15', classRoom: 'E 545' }
+                { day: 'Viernes', start: '20:15', end: '21:45', classRoom: 'E 542' },
+                { day: 'Sábado', start: '06:45', end: '08:15', classRoom: 'E 545' }
               ]
             },
             {
@@ -2099,20 +2098,20 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'TORREZ BRAVO CARLOS ALFREDO', group: '23', days: [
-                { day: 'Lunes', start:'20:15', end: '21:45', classRoom: 'E 541' },
+                { day: 'Lunes', start: '20:15', end: '21:45', classRoom: 'E 541' },
                 { day: 'Miércoles', start: '20:15', end: '21:45', classRoom: 'E 510' },
                 { day: 'Viernes', start: '18:45', end: '20:15', classRoom: 'E 507' }
               ]
             }
           ]
-        },{
+        }, {
           nombre: 'AUDITORIA DE GESTION',
           docentes: [
             {
               id: 1, name: 'ESPADA FLORES JUAN RAMIRO', group: '21', days: [
                 { day: 'Lunes', start: '18:45', end: '20:15', classRoom: 'E 516' },
-                { day: 'Martes', start:'20:15', end: '21:45', classRoom: 'E 507' },
-                { day: 'Miércoles', start:'18:45', end: '20:15', classRoom: 'E 513' }
+                { day: 'Martes', start: '20:15', end: '21:45', classRoom: 'E 507' },
+                { day: 'Miércoles', start: '18:45', end: '20:15', classRoom: 'E 513' }
               ]
             },
             {
@@ -2124,7 +2123,7 @@ export class OrganizerComponent {
             },
             {
               id: 3, name: 'ARAMAYO ANTEZANA JAIME ANTONIO', group: '23', days: [
-                { day: 'Martes', start:'11:15', end: '12:45', classRoom: 'E 544' },
+                { day: 'Martes', start: '11:15', end: '12:45', classRoom: 'E 544' },
                 { day: 'Miércoles', start: '11:15', end: '12:45', classRoom: 'E 548' },
                 { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 550' }
               ]
@@ -2144,23 +2143,19 @@ export class OrganizerComponent {
 
   selectedSubjects: any[] = [];
 
-  toggleSubject(subject: any, event: any) {
-
+  toggleSubject(subject: any, event: any, subjectName: any) {
     if (event.target.checked) {
       let color = this.colors[0];
       this.inUse.push(color);
       let index = this.colors.findIndex((colorArr) => { return colorArr == color });
       this.colors.splice(index, 1);
-
-
       if (subject.days.length > 0) {
         subject.color = color;
         for (let day of subject.days) {
-          this.selectedSubjects.push({ idGroup: subject.id, ...day, name: subject.name, group: subject.group, color: color });
+          this.selectedSubjects.push({ idGroup: subject.id, ...day, name: subject.name, group: subject.group, color: color, subjectName: subjectName });
           console.log(this.selectedSubjects)
         }
       }
-
       this.selectedSubjects.push(subject);
     } else {
       this.colors.push(subject.color)

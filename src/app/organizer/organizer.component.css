@@ -55,3 +55,18 @@
 .letterReal{
   font-size: 12.5px;
 }
+.letterMinium{
+  font-size: 12px;
+}
+img {
+  width: 150px;  /* Cambia el ancho */
+  height: 100px; /* Cambia la altura */
+}
+
+.fondo1 {
+  background-color: #eaeaea; /* Color gris claro */
+}
+.fondo2 {
+  background-color: #aca8ff; /* Color gris claro */
+}
+
