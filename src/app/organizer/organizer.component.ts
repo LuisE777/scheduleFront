@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+
+import autoTable from 'jspdf-autotable';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import 'jspdf-autotable';
+import { jsPDF } from 'jspdf';
+import Swal from 'sweetalert2';
+
+
+import html2canvas from 'html2canvas';
+declare module 'jspdf' {
+  interface jsPDF {
+    autoTable: (options: any) => jsPDF;
+  }
+}
+
 @Component({
   selector: 'app-organizer',
   templateUrl: './organizer.component.html',
   styleUrls: ['./organizer.component.css']
 })
 export class OrganizerComponent {
+  @ViewChild('contenido', { static: false }) contenido!: ElementRef;
   colors: any[] = [
     "#9fc0ff",
     "#babcfa",
@@ -2166,5 +2181,69 @@ export class OrganizerComponent {
   getSubjectsForCell(day: string, hour: string) {
     if (this.selectedSubjects.length > 0) console.log('materias', this.selectedSubjects);
     return this.selectedSubjects.filter(subject => subject.day === day && subject.start === hour);
+  }
+  async loadImage(src: string): Promise<string> {
+    const img = new Image();
+    img.src = src;
+    img.crossOrigin = "anonymous";
+    await new Promise(resolve => img.onload = resolve);
+    const canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext("2d");
+    ctx?.drawImage(img, 0, 0);
+    return canvas.toDataURL("image/png");
+  }
+  async generatePDF() {
+    const doc = new jsPDF({
+      orientation: 'p',
+      unit: 'mm',
+      format: [210, 297]
+
+    });
+
+    doc.setFont("times", "bold");
+    doc.text('HORARIO - SIAT',70,15)
+    const imgData = await this.loadImage('assets/img/aguila.png');
+    doc.addImage(imgData, 'PNG',120, 5, 18, 18)
+
+    const columns = ['Hora','Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const data = [['06:45'], ['08:15'], ['09:45'], ['11:15'], ['12:45'], ['14:15'], ['15:45'], ['16:30'], ['17:15'], ['18:45'], ['20:15'], ['21:45']];;
+
+    doc.autoTable({
+      headStyles: {
+        fillColor: "#1864f9",
+      },
+      startY: 25,
+      head: [columns],
+      body: data,
+    });
+    doc.save('HORARIO SIAT.pdf');
+  }
+  async generateImage(){
+    Swal.fire({
+      title: 'Generando imagen...',
+      html: 'Por favor, espera un momento.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+    await new Promise(resolve => setTimeout(resolve, 100));
+    const element = this.contenido.nativeElement;
+    html2canvas(element).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = imgData;
+      link.download = 'HORARIO-SIAT.png';
+      Swal.fire({
+        icon: 'success',
+        title: '¡Completado!',
+        text: '',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: '#3085d6'
+      });
+      link.click();
+    });
   }
 }
