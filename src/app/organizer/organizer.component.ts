@@ -573,10 +573,17 @@ export class OrganizerComponent {
           nombre: 'ECONOMÍA GENERAL',
           docentes: [
             {
-              id: 68, name: 'MALLCU LUPE ALEX YASMANI', group: '03', days: [
+              id: 6811, name: 'MALLCU LUPE ALEX YASMANI', group: '02', days: [
                 { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 501' },
                 { day: 'Viernes', start: '08:15', end: '09:45', classRoom: 'E PB-4' },
                 { day: 'Sábado', start: '08:15', end: '09:45', classRoom: 'E 512' }
+              ]
+            },
+            {
+              id: 68, name: 'GRIGORIU MONROY FRANCISCO PABLO', group: '03', days: [
+                { day: 'Martes', start: '08:15', end: '09:45', classRoom: 'E 308' },
+                { day: 'Jueves', start: '09:45', end: '11:15', classRoom: 'E 308' },
+                { day: 'Viernes', start: '09:45', end: '11:15', classRoom: 'E 308' }
               ]
             },
             {
