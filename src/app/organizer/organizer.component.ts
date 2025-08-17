@@ -2256,6 +2256,7 @@ export class OrganizerComponent {
 
 
   async downloadScheduleAsImage() {
+    alert('click')
     try {
       // Importar html2canvas dinámicamente
       const html2canvas = await import('html2canvas');
