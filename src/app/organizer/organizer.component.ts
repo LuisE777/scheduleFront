@@ -2246,4 +2246,123 @@ export class OrganizerComponent {
       link.click();
     });
   }
+
+
+  async downloadScheduleAsImage() {
+    try {
+      // Importar html2canvas dinámicamente
+      const html2canvas = await import('html2canvas');
+
+      // Crear canvas de la tabla
+      const canvas = await html2canvas.default(this.contenido.nativeElement, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        width: this.contenido.nativeElement.offsetWidth,
+        height: this.contenido.nativeElement.offsetHeight
+      });
+
+      // Convertir canvas a blob y descargar
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `horario-${new Date().toISOString().split('T')[0]}.png`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(url);
+        }
+      }, 'image/png');
+
+    } catch (error) {
+      console.error('Error al descargar la imagen:', error);
+      alert('Error al generar la imagen del horario');
+    }
+  }
+
+  async downloadScheduleAsWallpaper() {
+    try {
+      // Importar html2canvas dinámicamente
+      const html2canvas = await import('html2canvas');
+
+      // Obtener dimensiones reales del dispositivo
+      const dpr = window.devicePixelRatio || 1;
+      const wallpaperWidth = window.screen.width * dpr;
+      const wallpaperHeight = window.screen.height * dpr;
+
+      // Márgenes seguros (5% arriba y abajo)
+      const marginTop = wallpaperHeight * 0.05;
+      const marginBottom = wallpaperHeight * 0.05;
+      const maxWidth = wallpaperWidth * 0.9;
+      const maxHeight = wallpaperHeight - marginTop - marginBottom;
+
+      // Calcular escala para html2canvas según tamaño de tabla
+      const tableEl = this.contenido.nativeElement;
+      const scale = Math.min(maxWidth / tableEl.offsetWidth, maxHeight / tableEl.offsetHeight);
+
+      // Crear canvas de la tabla con html2canvas
+      const canvas = await html2canvas.default(tableEl, {
+        scale: scale,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff'
+      });
+
+      // Crear canvas final del tamaño de pantalla
+      const wallpaperCanvas = document.createElement('canvas');
+      const ctx = wallpaperCanvas.getContext('2d')!;
+      wallpaperCanvas.width = wallpaperWidth;
+      wallpaperCanvas.height = wallpaperHeight;
+
+      // Fondo blanco
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, wallpaperWidth, wallpaperHeight);
+
+      // Calcular dimensiones de la tabla para centrarla
+      const tableAspectRatio = canvas.width / canvas.height;
+      let finalWidth, finalHeight;
+
+      if (maxWidth / tableAspectRatio <= maxHeight) {
+        finalWidth = maxWidth;
+        finalHeight = maxWidth / tableAspectRatio;
+      } else {
+        finalHeight = maxHeight;
+        finalWidth = maxHeight * tableAspectRatio;
+      }
+
+      const x = (wallpaperWidth - finalWidth) / 2;
+      const y = marginTop + (maxHeight - finalHeight) / 2;
+
+      // Dibujar la tabla centrada
+      ctx.drawImage(canvas, x, y, finalWidth, finalHeight);
+
+      // Agregar título opcional arriba de la tabla
+      ctx.fillStyle = '#333333';
+      ctx.font = `${Math.floor(dpr * 40)}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.fillText('Mi Horario', wallpaperWidth / 2, y - 50);
+
+      // Convertir a blob y descargar
+      wallpaperCanvas.toBlob((blob) => {
+        if (blob) {
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `horario-wallpaper-${new Date().toISOString().split('T')[0]}.png`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(url);
+        }
+      }, 'image/png', 0.95);
+
+    } catch (error) {
+      console.error('Error al descargar la imagen:', error);
+      alert('Error al generar el fondo de pantalla');
+    }
+  }
+
 }
