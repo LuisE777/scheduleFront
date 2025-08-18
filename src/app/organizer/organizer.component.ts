@@ -4,7 +4,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import 'jspdf-autotable';
 import { jsPDF } from 'jspdf';
 import Swal from 'sweetalert2';
-import { saveAs } from 'file-saver';
+//import { saveAs } from 'file-saver';
+import * as FileSaver from 'file-saver';
 
 
 import html2canvas from 'html2canvas';
@@ -2326,10 +2327,11 @@ export class OrganizerComponent {
 
       wallpaperCanvas.toBlob((blob) => {
         if (blob) {
-          saveAs(
-            blob,
-            `horario-wallpaper-${new Date().toISOString().split('T')[0]}.png`
-          );
+          FileSaver.saveAs(blob, 'horario.png');
+          // saveAs(
+          //   blob,
+          //   `horario-wallpaper-${new Date().toISOString().split('T')[0]}.png`
+          // );
 
           // ✅ Reemplazar loading por éxito
           Swal.fire({
