@@ -14,14 +14,34 @@
   font-weight: bold;
 }
 
+/* Contenedor de íconos centrado y flexible */
+.social-icons {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;
+  gap: 20px;               /* espacio entre iconos */
+  flex-wrap: wrap;         /* permite que salten a otra fila en pantallas pequeñas */
+}
+
 .social-icons a {
-  margin: 0 15px;
   font-size: 28px;
   color: #fff;
   transition: transform 0.3s, color 0.3s;
+  text-decoration: none;
 }
 
 .social-icons a:hover {
   transform: scale(1.2);
   color: #FFD700; /* Dorado al pasar el mouse */
+}
+
+/* 🔹 Ajustes responsive */
+@media (max-width: 600px) {
+  .footer-text {
+    font-size: 16px;
+  }
+
+  .social-icons a {
+    font-size: 24px;
+  }
 }
