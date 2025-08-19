@@ -1,0 +1,27 @@
+.footer-social {
+  background: linear-gradient(to right, #0052D4, #4364F7, #6FB1FC);
+  padding: 20px;
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.footer-text {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.social-icons a {
+  margin: 0 15px;
+  font-size: 28px;
+  color: #fff;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #FFD700; /* Dorado al pasar el mouse */
+}
