@@ -2348,5 +2348,101 @@ export class OrganizerComponent {
       });
     }
   }
+  async downloadScheduleAsWallpaper3() {
+    try {
+      // 🔹 Mostrar loading inmediatamente
+      Swal.fire({
+        title: 'Generando imagen...',
+        html: 'Por favor, espera un momento.',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+
+      // 🔹 Dale tiempo a que el Swal se pinte antes del proceso pesado
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const html2canvas = await import('html2canvas');
+
+      const dpr = window.devicePixelRatio || 1;
+      const wallpaperWidth = window.screen.width * dpr;
+      const wallpaperHeight = window.screen.height * dpr;
+
+      const marginTop = wallpaperHeight * 0.05;
+      const marginBottom = wallpaperHeight * 0.05;
+      const maxWidth = wallpaperWidth * 0.9;
+      const maxHeight = wallpaperHeight - marginTop - marginBottom;
+
+      const tableEl = this.contenido.nativeElement;
+      const scale = Math.min(
+        maxWidth / tableEl.offsetWidth,
+        maxHeight / tableEl.offsetHeight
+      );
+
+      const canvas = await html2canvas.default(tableEl, {
+        scale,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+      });
+
+      const wallpaperCanvas = document.createElement('canvas');
+      const ctx = wallpaperCanvas.getContext('2d')!;
+      wallpaperCanvas.width = wallpaperWidth;
+      wallpaperCanvas.height = wallpaperHeight;
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, wallpaperWidth, wallpaperHeight);
+
+      const tableAspectRatio = canvas.width / canvas.height;
+      let finalWidth, finalHeight;
+
+      // ✅ Opción 1: priorizar ancho (más horizontal)
+      finalWidth = maxWidth;
+      finalHeight = maxWidth / tableAspectRatio;
+
+      // Si la altura resultante se pasa del límite, ajusta
+      if (finalHeight > maxHeight) {
+        finalHeight = maxHeight;
+        finalWidth = maxHeight * tableAspectRatio;
+      }
+
+      const x = (wallpaperWidth - finalWidth) / 2;
+      const y = marginTop + (maxHeight - finalHeight) / 2;
+
+      ctx.drawImage(canvas, x, y, finalWidth, finalHeight);
+
+      ctx.fillStyle = '#333333';
+      ctx.font = `${Math.floor(dpr * 40)}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.fillText('', wallpaperWidth / 2, y - 50);
+
+      wallpaperCanvas.toBlob((blob) => {
+        if (blob) {
+          FileSaver.saveAs(blob, 'horario.png');
+
+          // ✅ Reemplazar loading por éxito
+          Swal.fire({
+            icon: 'success',
+            title: '¡Descarga completa!',
+            text: 'Tu fondo de pantalla se generó correctamente.',
+            confirmButtonText: 'Aceptar',
+          });
+        }
+      }, 'image/png', 0.95);
+
+    } catch (error) {
+      console.error('Error al descargar la imagen:', error);
+
+      // ❌ Reemplazar loading por error
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al generar el fondo de pantalla',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+  }
 
 }
