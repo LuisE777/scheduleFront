@@ -6,21 +6,30 @@
   color: #fff;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-text {
   font-size: 18px;
   margin-bottom: 15px;
   font-weight: bold;
+  word-wrap: break-word; /* evita que se desborde */
+  text-align: center;
 }
 
-/* Contenedor de íconos centrado y flexible */
 .social-icons {
   display: flex;
-  justify-content: center; /* centra horizontalmente */
+  justify-content: center;
   align-items: center;
-  gap: 20px;               /* espacio entre iconos */
-  flex-wrap: wrap;         /* permite que salten a otra fila en pantallas pequeñas */
+  gap: 20px;
+  flex-wrap: wrap; /* 🔹 permite que bajen de línea en pantallas pequeñas */
 }
 
 .social-icons a {
@@ -32,16 +41,7 @@
 
 .social-icons a:hover {
   transform: scale(1.2);
-  color: #FFD700; /* Dorado al pasar el mouse */
+  color: #FFD700;
 }
 
-/* 🔹 Ajustes responsive */
-@media (max-width: 600px) {
-  .footer-text {
-    font-size: 16px;
-  }
 
-  .social-icons a {
-    font-size: 24px;
-  }
-}

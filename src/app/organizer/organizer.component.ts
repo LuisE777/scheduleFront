@@ -2536,7 +2536,7 @@ rctx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error al generar el fondo de pantalla',
+        text: 'Error al generar el horario',
         confirmButtonText: 'Cerrar',
       });
     }
@@ -2655,7 +2655,6 @@ rctx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
           Swal.fire({
             icon: 'success',
             title: '¡Descarga completa!',
-            text: 'Tu fondo de pantalla se generó correctamente.',
             confirmButtonText: 'Aceptar'
           });
         }
@@ -2666,7 +2665,7 @@ rctx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error al generar el fondo de pantalla',
+        text: 'Error al generar el horario',
         confirmButtonText: 'Cerrar'
       });
     }
@@ -2799,7 +2798,6 @@ rctx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
             Swal.fire({
               icon: 'success',
               title: '¡Descarga completa!',
-              text: 'Tu fondo de pantalla se generó correctamente en horizontal.',
               confirmButtonText: 'Aceptar'
             });
           }
@@ -2810,7 +2808,7 @@ rctx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Error al generar el fondo de pantalla',
+          text: 'Error al generar el horario',
           confirmButtonText: 'Cerrar'
         });
       }
