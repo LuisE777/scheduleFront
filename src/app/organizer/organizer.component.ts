@@ -2181,7 +2181,7 @@ export class OrganizerComponent {
   }
 
   getSubjectsForCell(day: string, hour: string) {
-    if (this.selectedSubjects.length > 0) console.log('materias', this.selectedSubjects);
+   // if (this.selectedSubjects.length > 0) console.log('materias', this.selectedSubjects);
     return this.selectedSubjects.filter(subject => subject.day === day && subject.start === hour);
   }
   async loadImage(src: string): Promise<string> {
@@ -2444,5 +2444,235 @@ export class OrganizerComponent {
       });
     }
   }
+
+
+  async downloadScheduleAsWallpaper4() {
+    try {
+      Swal.fire({
+        title: 'Generando imagen...',
+        html: 'Por favor, espera un momento.',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const html2canvas = await import('html2canvas');
+
+      const dpr = window.devicePixelRatio || 1;
+      const wallpaperWidth = window.screen.width * dpr;
+      const wallpaperHeight = window.screen.height * dpr;
+
+      const marginTop = wallpaperHeight * 0.05;
+      const marginBottom = wallpaperHeight * 0.05;
+      const maxWidth = wallpaperWidth * 0.9;
+      const maxHeight = wallpaperHeight - marginTop - marginBottom;
+
+      const tableEl = this.contenido.nativeElement;
+      const scale = Math.min(
+        maxWidth / tableEl.offsetWidth,
+        maxHeight / tableEl.offsetHeight
+      );
+
+      // 🔹 Captura el horario como está
+      const canvas = await html2canvas.default(tableEl, {
+        scale,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+      });
+
+      // 🔹 Crear lienzo para el wallpaper
+      const wallpaperCanvas = document.createElement('canvas');
+      const ctx = wallpaperCanvas.getContext('2d')!;
+      wallpaperCanvas.width = wallpaperWidth;
+      wallpaperCanvas.height = wallpaperHeight;
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, wallpaperWidth, wallpaperHeight);
+
+      // ✅ Rotar 90 grados el canvas original (para hacerlo horizontal)
+ // ✅ Rotar -90 grados el canvas original (para que los días queden al otro lado)
+const rotatedCanvas = document.createElement('canvas');
+rotatedCanvas.width = canvas.height;   // intercambiar dimensiones
+rotatedCanvas.height = canvas.width;
+const rctx = rotatedCanvas.getContext('2d')!;
+rctx.translate(rotatedCanvas.width / 2, rotatedCanvas.height / 2);
+rctx.rotate(-Math.PI / 2); // -90 grados, días pasan al otro lado
+rctx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
+
+
+      // 🔹 Ajustar dimensiones al wallpaper
+      const tableAspectRatio = rotatedCanvas.width / rotatedCanvas.height;
+      let finalWidth = maxWidth;
+      let finalHeight = maxWidth / tableAspectRatio;
+
+      if (finalHeight > maxHeight) {
+        finalHeight = maxHeight;
+        finalWidth = maxHeight * tableAspectRatio;
+      }
+
+      const x = (wallpaperWidth - finalWidth) / 2;
+      const y = marginTop + (maxHeight - finalHeight) / 2;
+
+      ctx.drawImage(rotatedCanvas, x, y, finalWidth, finalHeight);
+
+      wallpaperCanvas.toBlob((blob) => {
+        if (blob) {
+          FileSaver.saveAs(blob, 'horario-horizontal.png');
+          Swal.fire({
+            icon: 'success',
+            title: '¡Descarga completa!',
+            text: 'Tu fondo de pantalla horizontal se generó correctamente.',
+            confirmButtonText: 'Aceptar',
+          });
+        }
+      }, 'image/png', 0.95);
+
+    } catch (error) {
+      console.error('Error al descargar la imagen:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al generar el fondo de pantalla',
+        confirmButtonText: 'Cerrar',
+      });
+    }
+  }
+
+  async downloadScheduleAsWallpaperFilteredMobile() {
+    if( this.selectedSubjects?.length <= 0){
+      Swal.fire({
+        icon: 'warning',
+        title: 'No permitido',
+        text: 'Debe seleccionar por lo menos una materia',
+        confirmButtonText: 'Cerrar',
+      });
+    }else{
+          try {
+      Swal.fire({
+        title: 'Generando imagen...',
+        html: 'Por favor, espera un momento.',
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading()
+      });
+
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      const html2canvas = await import('html2canvas');
+      const dpr = window.devicePixelRatio || 1;
+      const wallpaperWidth = window.screen.width * dpr;
+      const wallpaperHeight = window.screen.height * dpr;
+
+      const marginTop = wallpaperHeight * 0.05;
+      const maxWidth = wallpaperWidth * 0.9;
+      const maxHeight = wallpaperHeight - marginTop * 2;
+
+      const tableEl = this.contenido.nativeElement;
+
+      // 🔹 Contenedor temporal
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'absolute';
+      wrapper.style.left = '-9999px';
+      document.body.appendChild(wrapper);
+
+      // 🔹 Clonar tabla y filtrar columnas y filas vacías
+      const tableClone = tableEl.cloneNode(true) as HTMLTableElement;
+
+      // 🔹 Columnas a mantener
+      const headerCells = tableClone.querySelectorAll('thead th');
+      const daysIndicesToKeep: number[] = [];
+      for (let i = 1; i < headerCells.length; i++) {
+        const colIndex = i;
+        const hasContent = Array.from(tableClone.querySelectorAll('tbody tr'))
+          .some(row => {
+            const td = row.querySelectorAll('td')[colIndex];
+            return td && td.textContent && td.textContent.trim() !== '';
+          });
+        if (hasContent) daysIndicesToKeep.push(colIndex);
+      }
+
+      tableClone.querySelectorAll('tr').forEach(tr => {
+        const tds = Array.from(tr.children) as HTMLElement[];
+        tds.forEach((td, idx) => {
+          if (idx !== 0 && !daysIndicesToKeep.includes(idx)) td.remove();
+        });
+      });
+
+      // 🔹 Filas a mantener
+      tableClone.querySelectorAll('tbody tr').forEach(tr => {
+        const tds = tr.querySelectorAll('td');
+        const hasContent = Array.from(tds).slice(1)
+          .some(td => td.textContent && td.textContent.trim() !== '');
+        if (!hasContent) tr.remove();
+      });
+
+      wrapper.appendChild(tableClone);
+
+      // 🔹 Escala adaptada a pantalla móvil
+      const scale = Math.min(
+        maxWidth / wrapper.offsetWidth,
+        maxHeight / wrapper.offsetHeight
+      ) * dpr;
+
+      const canvas = await html2canvas.default(wrapper, {
+        scale,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff'
+      });
+
+      document.body.removeChild(wrapper);
+
+      // 🔹 Canvas final
+      const wallpaperCanvas = document.createElement('canvas');
+      const ctx = wallpaperCanvas.getContext('2d')!;
+      wallpaperCanvas.width = wallpaperWidth;
+      wallpaperCanvas.height = wallpaperHeight;
+
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, wallpaperWidth, wallpaperHeight);
+
+      const tableAspectRatio = canvas.width / canvas.height;
+      let finalWidth = maxWidth;
+      let finalHeight = maxWidth / tableAspectRatio;
+      if (finalHeight > maxHeight) {
+        finalHeight = maxHeight;
+        finalWidth = maxHeight * tableAspectRatio;
+      }
+
+      const x = (wallpaperWidth - finalWidth) / 2;
+      const y = marginTop + (maxHeight - finalHeight) / 2;
+
+      ctx.drawImage(canvas, x, y, finalWidth, finalHeight);
+
+      // 🔹 Guardar imagen
+      wallpaperCanvas.toBlob(blob => {
+        if (blob) {
+          FileSaver.saveAs(blob, 'horario-filtrado-mobile.png');
+          Swal.fire({
+            icon: 'success',
+            title: '¡Descarga completa!',
+            text: 'Tu fondo de pantalla se generó correctamente.',
+            confirmButtonText: 'Aceptar'
+          });
+        }
+      }, 'image/png');
+
+    } catch (error) {
+      console.error('Error al generar imagen filtrada:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al generar el fondo de pantalla',
+        confirmButtonText: 'Cerrar'
+      });
+    }
+  }
+  }
+
+
 
 }
