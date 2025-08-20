@@ -2674,5 +2674,147 @@ rctx.drawImage(canvas, -canvas.width / 2, -canvas.height / 2);
   }
 
 
+  async downloadScheduleAsWallpaperFilteredMobile1() {
+    if (this.selectedSubjects?.length <= 0) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'No permitido',
+        text: 'Debe seleccionar por lo menos una materia',
+        confirmButtonText: 'Cerrar',
+      });
+    } else {
+      try {
+        Swal.fire({
+          title: 'Generando imagen...',
+          html: 'Por favor, espera un momento.',
+          allowOutsideClick: false,
+          didOpen: () => Swal.showLoading()
+        });
+
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        const html2canvas = await import('html2canvas');
+        const dpr = window.devicePixelRatio || 1;
+        const wallpaperWidth = window.screen.width * dpr;
+        const wallpaperHeight = window.screen.height * dpr;
+
+        const marginTop = wallpaperHeight * 0.05;
+        const maxWidth = wallpaperWidth * 0.9;
+        const maxHeight = wallpaperHeight - marginTop * 2;
+
+        const tableEl = this.contenido.nativeElement;
+
+        // 🔹 Contenedor temporal
+        const wrapper = document.createElement('div');
+        wrapper.style.position = 'absolute';
+        wrapper.style.left = '-9999px';
+        document.body.appendChild(wrapper);
+
+        // 🔹 Clonar tabla y filtrar columnas y filas vacías
+        const tableClone = tableEl.cloneNode(true) as HTMLTableElement;
+
+        // 🔹 Columnas a mantener
+        const headerCells = tableClone.querySelectorAll('thead th');
+        const daysIndicesToKeep: number[] = [];
+        for (let i = 1; i < headerCells.length; i++) {
+          const colIndex = i;
+          const hasContent = Array.from(tableClone.querySelectorAll('tbody tr'))
+            .some(row => {
+              const td = row.querySelectorAll('td')[colIndex];
+              return td && td.textContent && td.textContent.trim() !== '';
+            });
+          if (hasContent) daysIndicesToKeep.push(colIndex);
+        }
+
+        tableClone.querySelectorAll('tr').forEach(tr => {
+          const tds = Array.from(tr.children) as HTMLElement[];
+          tds.forEach((td, idx) => {
+            if (idx !== 0 && !daysIndicesToKeep.includes(idx)) td.remove();
+          });
+        });
+
+        // 🔹 Filas a mantener
+        tableClone.querySelectorAll('tbody tr').forEach(tr => {
+          const tds = tr.querySelectorAll('td');
+          const hasContent = Array.from(tds).slice(1)
+            .some(td => td.textContent && td.textContent.trim() !== '');
+          if (!hasContent) tr.remove();
+        });
+
+        wrapper.appendChild(tableClone);
+
+        // 🔹 Escala adaptada
+        const scale = Math.min(
+          maxWidth / wrapper.offsetWidth,
+          maxHeight / wrapper.offsetHeight
+        ) * dpr;
+
+        const canvas = await html2canvas.default(wrapper, {
+          scale,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: '#ffffff'
+        });
+
+        document.body.removeChild(wrapper);
+
+        // =====================================================
+        // 🔹 Canvas final en horizontal (rotado a la izquierda)
+        // =====================================================
+        const wallpaperCanvas = document.createElement('canvas');
+        const ctx = wallpaperCanvas.getContext('2d')!;
+
+        // ⬅️ Canvas en horizontal: ancho = alto pantalla, alto = ancho pantalla
+        wallpaperCanvas.width = wallpaperHeight;
+        wallpaperCanvas.height = wallpaperWidth;
+
+        // Fondo blanco
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, wallpaperCanvas.width, wallpaperCanvas.height);
+
+        // ⬅️ Rotamos -90° (izquierda) y trasladamos para que quede visible
+        ctx.translate(0, wallpaperCanvas.height);
+        ctx.rotate(-Math.PI / 2);
+
+        // 🔹 Ajustar tamaño de la tabla dentro del nuevo canvas
+        const tableAspectRatio = canvas.width / canvas.height;
+        let finalWidth = wallpaperWidth * 0.9;
+        let finalHeight = finalWidth / tableAspectRatio;
+
+        if (finalHeight > wallpaperHeight * 0.9) {
+          finalHeight = wallpaperHeight * 0.9;
+          finalWidth = finalHeight * tableAspectRatio;
+        }
+
+        // Como ya rotamos, el centro debe calcularse con las dimensiones originales
+        const x = (wallpaperWidth - finalWidth) / 2;
+        const y = (wallpaperHeight - finalHeight) / 2;
+
+        ctx.drawImage(canvas, x, y, finalWidth, finalHeight);
+
+        // 🔹 Guardar imagen
+        wallpaperCanvas.toBlob(blob => {
+          if (blob) {
+            FileSaver.saveAs(blob, 'horario-filtrado-mobile.png');
+            Swal.fire({
+              icon: 'success',
+              title: '¡Descarga completa!',
+              text: 'Tu fondo de pantalla se generó correctamente en horizontal.',
+              confirmButtonText: 'Aceptar'
+            });
+          }
+        }, 'image/png');
+
+      } catch (error) {
+        console.error('Error al generar imagen filtrada:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Error al generar el fondo de pantalla',
+          confirmButtonText: 'Cerrar'
+        });
+      }
+    }
+  }
 
 }
